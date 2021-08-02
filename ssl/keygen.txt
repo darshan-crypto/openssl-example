@@ -1,0 +1,6 @@
+genrsa -out x.key 2048 
+openssl rsa -in x.key -pubout -out pub.key
+openssl req -new -key pub.key -out x.csr
+openssl req -text -in x.csr -noout -veriy
+openssl x509 -in x.csr -out x.crt -req -signkey x.key -days 365
+
